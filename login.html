@@ -141,10 +141,10 @@
                         form.classList.remove('animate-shake');
                     }, 500);
                 } else {
-                    // Successful login - redirect or show success
-                    alert('Login successful! Welcome back, my love!');
-                    errorMessage.classList.add('hidden');
-                }
+    // Successful login - redirect
+    errorMessage.classList.add('hidden');
+    window.location.href = 'index.html'; // or 'main.html' or 'love.html'
+}
             });
             
             // Add custom animation class
