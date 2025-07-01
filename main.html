@@ -21,7 +21,7 @@
         
         .heart-bg {
             background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23fecdd3" opacity="0.2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
-            background-size: 200px;
+            background-size: 200px;w
             background-repeat: repeat;
         }
         
@@ -63,7 +63,7 @@
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-heart text-pink-500 text-2xl"></i>
-                    <span class="title-font text-2xl font-bold text-pink-600">Our Love Story</span>
+                    <span class="title-font text-2xl font-bold text-pink-600">Anjali's Birthday Month</span>
                 </div>
                 <div class="hidden md:flex space-x-6">
                     <a href="#home" class="text-pink-600 hover:text-pink-800 font-medium">Home</a>
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <h1 class="title-font text-4xl md:text-6xl font-bold text-pink-700 mb-4">Happy Birthday Countdown</h1>
-            <p class="text-xl md:text-2xl text-pink-600 mb-8">Every day brings us closer to celebrating you ❤️</p>
+            <p class="text-xl md:text-2xl text-pink-600 mb-8"> Counting down the sparkle ❤️</p>
             <div class="bg-white bg-opacity-80 rounded-xl p-6 max-w-md mx-auto shadow-md">
                 <p class="text-pink-700 font-medium mb-2">Only</p>
                 <div id="countdown" class="text-3xl font-bold text-pink-600 mb-2">10 days</div>
@@ -201,14 +201,13 @@
                 day: 10,
                 title: "The Beginning of Our Countdown",
                 message: "Today marks 10 days until your birthday, and I can't wait to celebrate you. You make every day brighter just by being in it.",
-                image: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                image: "images/day10.jpg"            
             },
             {
                 day: 9,
                 title: "Your Beautiful Smile",
                 message: "Your smile has the power to light up my darkest days. I'm so grateful to wake up to it every morning.",
-                image: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-            },
+                image: "images/day9.jpg"                },
             {
                 day: 8,
                 title: "Our First Date",
@@ -231,8 +230,14 @@
 
         // Render posts
         const postsContainer = document.getElementById('posts-container');
+
+        // Example: Set birthday to July 7, 2025 (adjust as needed)
+        const birthday = new Date("2025-07-13T00:00:00");
         
         posts.forEach(post => {
+            const postDate = new Date(birthday);
+            postDate.setDate(birthday.getDate() - post.day);
+
             const postElement = document.createElement('div');
             postElement.className = 'post-card bg-white bg-opacity-90 rounded-xl overflow-hidden shadow-md hover:shadow-lg';
             postElement.innerHTML = `
@@ -244,7 +249,7 @@
                             </div>
                             <div>
                                 <p class="font-semibold text-pink-800">Your Love</p>
-                                <p class="text-xs text-pink-500">${new Date().toLocaleDateString()}</p>
+                                <p class="text-xs text-pink-500">${postDate.toLocaleDateString()}</p>
                             </div>
                         </div>
                         <span class="bg-pink-100 text-pink-700 px-3 py-1 rounded-full text-sm font-medium">
@@ -284,9 +289,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Countdown calculation (example: birthday is 10 days from now)
-        const birthday = new Date();
-        birthday.setDate(birthday.getDate() + 10);
         
         function updateCountdown() {
             const now = new Date();
